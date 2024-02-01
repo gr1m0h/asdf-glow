@@ -1,4 +1,4 @@
-[![GitHub Actions Status](https://github.com/grimoh/asdf-glow/workflows/Main%20workflow/badge.svg?branch=master)](https://github.com/grimoh/asdf-glow/actions)
+[![GitHub Actions Status](https://github.com/grimoh/asdf-glow/workflows/Main%20workflow/badge.svg?branch=main)](https://github.com/grimoh/asdf-glow/actions)
 
 # asdf-glow
 
