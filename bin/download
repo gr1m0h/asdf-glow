@@ -5,12 +5,28 @@ set -e
 [ -n "$ASDF_INSTALL_VERSION" ] || (echo 'Missing ASDF_INSTALL_VERSION' >&2 && exit 1)
 [ -n "$ASDF_DOWNLOAD_PATH" ] || (echo 'Missing ASDF_DOWNLOAD_PATH' >&2 && exit 1)
 
+DOWNLOAD_PATH="https://github.com/charmbracelet/glow/releases/download"
+
 case "$(uname -s)" in
 	"Darwin")
-		DOWNLOAD_URL="https://github.com/charmbracelet/glow/releases/download/v${ASDF_INSTALL_VERSION}/glow_${ASDF_INSTALL_VERSION}_Darwin_x86_64.tar.gz"
+    case "${uname -m}" in
+      "arm64")
+        DOWNLOAD_URL="${DOWNLOAD_PATH}/v${ASDF_INSTALL_VERSION}/glow_${ASDF_INSTALL_VERSION}_Darwin_arm64.tar.gz"
+        ;;
+      "x86_64")
+        DOWNLOAD_URL="${DOWNLOAD_PATH}/v${ASDF_INSTALL_VERSION}/glow_${ASDF_INSTALL_VERSION}_Darwin_x86_64.tar.gz"
+        ;;
+    esac
 		;;
 	"Linux")
-		DOWNLOAD_URL="https://github.com/charmbracelet/glow/releases/download/v${ASDF_INSTALL_VERSION}/glow_${ASDF_INSTALL_VERSION}_linux_x86_64.tar.gz"
+    case "&$(uname -m)" in
+      "arm64")
+        DOWNLOAD_URL="${DOWNLOAD_PATH}/v${ASDF_INSTALL_VERSION}/glow_${ASDF_INSTALL_VERSION}_Linux_arm64.tar.gz"
+        ;;
+      "x86_64")
+        DOWNLOAD_URL="${DOWNLOAD_PATH}/v${ASDF_INSTALL_VERSION}/glow_${ASDF_INSTALL_VERSION}_Linux_x86_64.tar.gz"
+        ;;
+    esac
 		;;
 esac
 
